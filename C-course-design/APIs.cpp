@@ -5,6 +5,12 @@ extern int toolbar_choice;
 extern Lattice* lattices;
 extern Statement* statement;
 
+/*****处理鼠标事件的函数*****
+* 参数：无
+* 功能： 1. 当鼠标停留在相应区域时调用停留特效函数
+*		 2. 当鼠标点击工具栏时，切换界面
+* 返回值：无
+*/
 void manage_mouse_msg() {
 	//鼠标在输入按钮上显示被选中效果
 	if (msg.x > BUTTON_WIDTH * 0 && msg.x < BUTTON_WIDTH * 1 && msg.y > 0 && msg.y < BUTTON_HEIGHT) {
@@ -80,6 +86,11 @@ void manage_mouse_msg() {
 	}
 }
 
+/******用户输入API***********
+* 参数：无
+* 功能：实现用户输入时调用的函数，实现一个用户输入API
+* 返回值：无
+*/
 void user_input_API() {
 	draw_toolbar();
 	while (toolbar_choice == USER_INPUT) {
@@ -89,6 +100,11 @@ void user_input_API() {
 	}
 }
 
+/****风格一API******
+* 参数：无
+* 功能：实现对风格一调用时的函数，实现一个风格一的API
+* 返回值：无
+*/
 void style1_API() {
 	draw_toolbar();
 	if (isEmpty) {
@@ -103,6 +119,11 @@ void style1_API() {
 	}
 }
 
+/****风格二API******
+* 参数：无
+* 功能：实现对风格二调用时的函数，实现一个风格二的API
+* 返回值：无
+*/
 void style2_API() {
 	draw_toolbar();
 	if (isEmpty) {
@@ -117,6 +138,11 @@ void style2_API() {
 	}
 }
 
+/****风格三API******
+* 参数：无
+* 功能：实现对风格三调用时的函数，实现一个风格三的API
+* 返回值：无
+*/
 void style3_API() {
 	draw_toolbar();
 	if (isEmpty) {
@@ -131,6 +157,11 @@ void style3_API() {
 	}
 }
 
+/****风格四API******
+* 参数：无
+* 功能：实现对风格四调用时的函数，实现一个风格四的API
+* 返回值：无
+*/
 void style4_API() {
 	draw_toolbar();
 	if (isEmpty) {

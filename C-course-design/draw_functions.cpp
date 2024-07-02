@@ -4,18 +4,33 @@ extern Statement* statement;
 extern Lattice* lattices;
 extern int character_nums;
 
-/*画一个点*/
+/**********画一个点****************
+* 参数：   1. x：点的x坐标
+*         2. y: 点的y坐标
+* 功能：在（x, y）处画一个点
+* 返回值：无
+*/
 void draw_dot(int x, int y) {
 	solidcircle(x, y, DOT_RADIUS);
 }
 
-/*工具栏被选中时有停留特效*/
+/*******工具栏被选中时有停留特效*********
+* 参数： 1. (x, y)：需要特效按钮的左上角坐标
+*       2. (width, height)：按钮的高度和宽度
+*       3. color：颜色的取值
+* 功能：当鼠标停留在一个按钮上时，显示停留特效
+* 返回值：无 
+*/
 void linger_effect(int x, int y, int width, int height, int color) {
     setlinecolor(color); //设置停留边框的颜色
     roundrect(x, y, x + width, y + height, 10, 10);
 }
 
-/*将字符矩阵用相应的绘画函数画出来*/
+/*******将字符矩阵用相应的绘画函数画出来**************
+* 参数：无
+* 功能：将字符点阵结构体数组打印出来
+* 返回值：无
+*/
 void print_lattice() {
     cleardevice();
     draw_toolbar();
@@ -29,7 +44,11 @@ void print_lattice() {
 	}
 }
 
-/*将工具栏画出来*/
+/**********将工具栏画出来******************
+* 参数：无
+* 功能：绘制工具栏
+* 返回值：无
+*/
 void draw_toolbar() {
 
     graphdefaults();
@@ -60,7 +79,12 @@ void draw_toolbar() {
 
 }
 
-/*在(x, y)处画一个按钮*/
+/**********在(x, y)处画一个按钮**************
+* 参数： 1. (x, y)：在(x, y)处画一个按钮
+*       2. text：按钮上的文本
+* 功能：绘制一个按钮
+* 返回值：无
+*/
 void draw_button(int x, int y, const char* text) {
 
     setlinecolor(RED);      //设置框边颜色
@@ -79,7 +103,11 @@ void draw_button(int x, int y, const char* text) {
     graphdefaults();
 }
 
-/*实现文字的循环移动效果*/
+/********实现文字的循环移动效果*************
+* 参数：无
+* 功能：实现字符矩阵在打印区域循环移动
+* 返回值：无
+*/
 void style_1() {
     int x = 0;
     int frequency = 3;
@@ -107,7 +135,11 @@ void style_1() {
 
 }
 
-/*实现文字的颜色随机变化*/
+/********实现文字的颜色随机变化*************
+* 参数：无
+* 功能：实现字符矩阵的颜色随机变换
+* 返回值：无
+*/
 void style_2() {
     srand(time(NULL));
     enum {
@@ -172,7 +204,11 @@ void style_2() {
     }
 }
 
-/*实现字的循环移的效果和颜色随机变换*/
+/*************实现字的循环移的效果和颜色随机变换***************
+* 参数：无
+* 功能：实现字的循环移的效果和颜色随机变换
+* 返回值：无
+*/
 void style_3() {
     srand(time(NULL));
     enum {
@@ -235,17 +271,22 @@ void style_3() {
 
                 }
             }
-            x -= 1;
-            if (x < 0) {
-                x = WINDOW_WIDTH - 1;
-                frequency -= 1;
-            }
+
+        }
+        x -= 1;
+        if (x < 0) {
+            x = WINDOW_WIDTH - 1;
+            frequency -= 1;
         }
         EndBatchDraw();
     }
 }
 
-/*将文字实现文字的旋转(矩阵运算)*/
+/***********将文字实现文字的旋转(矩阵运算)************
+* 参数：无
+* 功能：将文字实现文字的旋转(矩阵运算)
+* 返回值：无
+*/
 void style_4() {
     int lattices_nums = character_nums;
 

@@ -11,11 +11,11 @@
 #define KERNING 350				//字距
 #define MAX_CHARACTER_SIZE 5	//字符数组中一个中文字符嘴的长度
 #define DOT_RADIUS 1			//绘制点的半径
-#define TOOLBAR_WIDTH 1400
-#define TOOLBAR_HEIGHT 50
-#define TOOLBAR_NUMS 6
-#define BUTTON_WIDTH 150
-#define BUTTON_HEIGHT 50
+#define TOOLBAR_WIDTH 1400		//工具栏宽度
+#define TOOLBAR_HEIGHT 50		//工具栏高度
+#define TOOLBAR_NUMS 6			//工具栏数量
+#define BUTTON_WIDTH 150		//按钮宽度
+#define BUTTON_HEIGHT 50		//按钮高度
 
 //将一个字符矩阵设置成结构体，以实现字符矩阵数组
 typedef struct Lattice {
@@ -27,6 +27,7 @@ typedef struct Statement {
 	char character[MAX_CHARACTER_SIZE];
 } Statement;
 
+//枚举工具栏
 enum {
 	USER_INPUT = 0,
 	STYLE_1,
