@@ -72,9 +72,9 @@ void draw_button(int x, int y, const char* text) {
     strcpy(text_, text);
     settextcolor(RED);
     settextstyle(40, 0, _T("ºÚÌå"));
-    int tx = x + (BUTTON_WIDTH - textwidth(text_)) / 2;
-    int ty = y + (BUTTON_HEIGHT - textheight(text_)) / 2;
-    outtextxy(tx, ty, text_);
+    int tx = x + (BUTTON_WIDTH - textwidth((LPCTSTR)text_)) / 2;
+    int ty = y + (BUTTON_HEIGHT - textheight((LPCTSTR)text_)) / 2;
+    outtextxy(tx, ty, (LPCTSTR)text_);
 
     graphdefaults();
 }

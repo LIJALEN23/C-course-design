@@ -45,7 +45,8 @@ void statement_input_console() {
 /*从对话框读取中文字符串函数*/
 void statement_input_inputbox() {
 	char buffer[50];
-	InputBox(buffer, 50, "请输入需打印字符串：");
+	char str[] = "请输入需打印字符串：";
+	InputBox((LPTSTR)buffer, 50, (LPTSTR)str);
 
 	size_t nums = strlen(buffer) / 2;
 	character_nums = (int)nums;

@@ -39,7 +39,7 @@ void generate_transposed_font_patterns(Lattice* lattice) {
 	for (int i = 0; i < LATTICE; i++) {
 		for (int j = 0; j < BYTES_PER_LINE; j++) {
 			for (int k = 0; k < 8; k++) {
-				flag = buffer[i][j] & key[k];
+				flag = buffer[i][j] & key[k];	//使用按位与操作检查第 k 行第 j 个字节的第 i 位是否被设置。
 				if (flag)
 					lattice->lattice[j * 8 + k][i] = 1;
 				else
