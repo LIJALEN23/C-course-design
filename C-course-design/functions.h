@@ -16,6 +16,7 @@
 #define TOOLBAR_NUMS 6			//工具栏数量
 #define BUTTON_WIDTH 150		//按钮宽度
 #define BUTTON_HEIGHT 50		//按钮高度
+#define MOVE_SPEED 2			//字符串移动的速度
 
 //将一个字符矩阵设置成结构体，以实现字符矩阵数组
 typedef struct Lattice {
@@ -43,13 +44,13 @@ void init();
 void statement_input_console();
 void statement_input_inputbox();
 void choose_tool(int button_top_left_x, int button_top_left_y, int choice);
-bool isEmpty();
 void closing();
 
 /*manage_words.cpp中的函数声明*/
 void read_character(char* character);
 void generate_font_patterns(Lattice* lattice);
 void generate_transposed_font_patterns(Lattice* lattice);
+void generate_rotated_font_patterns(Lattice* lattice);
 void generate_lattices();
 
 /*draw_functions.cpp中的函数声明*/

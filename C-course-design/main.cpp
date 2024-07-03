@@ -9,6 +9,7 @@ Statement* statement = NULL;	//存放中文字符串的中文字符数组
 ExMessage msg;
 int character_nums;		//要打印的字符串中字符的数量
 int toolbar_choice = USER_INPUT;
+bool first_run_sign = true;
 
 unsigned char buffer[LATTICE][BYTES_PER_LINE];		//缓冲区，用于存储从字库中读出的点阵数据，LATTICE：点阵，BYTES_PER_LINE：点阵的每行的字节数
 unsigned char key[8] = { 0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01 };

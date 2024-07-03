@@ -2,6 +2,8 @@
 
 extern Statement* statement;
 extern Lattice* lattices;
+extern ExMessage msg;
+extern int toolbar_choice;
 extern int character_nums;
 
 /**********画一个点****************
@@ -110,9 +112,12 @@ void draw_button(int x, int y, const char* text) {
 */
 void style_1() {
     int x = 0;
-    int frequency = 3;
 
-    while (frequency > 0) {
+    while (toolbar_choice == STYLE_1) {
+        if (peekmessage(&msg)) {
+            manage_mouse_msg();
+        }
+
         cleardevice();
 
         BeginBatchDraw();
@@ -126,13 +131,12 @@ void style_1() {
             }
         }
         EndBatchDraw();
-        x -= 1;
-        if (x < 0) {
+
+        x -= MOVE_SPEED;
+        if (x < -(KERNING * character_nums + 5 * (LATTICE / 8))) {  //x为所有字都移动到屏幕外了的x坐标
             x = WINDOW_WIDTH - 1;
-            frequency -= 1;
         }
     }
-
 }
 
 /********实现文字的颜色随机变化*************
@@ -152,12 +156,24 @@ void style_2() {
         white
     };
 
-    int dot_color;
-    int frequency = 15;
+    int dot_color = red;
+    int change_rate = 40;   //通过修改change_rate的值改变闪烁的频率
 
-    while (frequency) {
-        dot_color = 1 + (rand() % (7 - 1 + 1));
+    while (toolbar_choice == STYLE_2) {
+        if (change_rate % 20 == 0) {
+            dot_color = 1 + (rand() % (7 - 1 + 1));
+        }
+        change_rate -= 1;
+        if (change_rate < 0) {
+            change_rate = 100;
+        }
 
+
+        if (peekmessage(&msg)) {
+            manage_mouse_msg();
+        }
+
+        cleardevice();
         BeginBatchDraw();
         draw_toolbar();
 
@@ -199,8 +215,6 @@ void style_2() {
             }
         }
         EndBatchDraw();
-        Sleep(400);
-        frequency -= 1;
     }
 }
 
@@ -222,14 +236,23 @@ void style_3() {
     };
 
     int x = 0;
-    int dot_color;
-    int frequency = 3;
+    int dot_color = red;
+    int change_rate = 40;   //通过修改change_rate的值改变闪烁的频率
 
-    while (frequency) {
-        if (x % 20 == 0) {
+
+    while (toolbar_choice == STYLE_3) {
+        if (change_rate % 20 == 0) {
             dot_color = 1 + (rand() % (7 - 1 + 1));
         }
+        change_rate -= 1;
+        if (change_rate < 0) {
+            change_rate = 100;
+        }
 
+
+        if (peekmessage(&msg)) {
+            manage_mouse_msg();
+        }
 
         cleardevice();
         BeginBatchDraw();
@@ -273,14 +296,14 @@ void style_3() {
             }
 
         }
-        x -= 1;
-        if (x < 0) {
+        x -= MOVE_SPEED;
+        if (x < -(KERNING * character_nums + 5 * (LATTICE / 8))) {
             x = WINDOW_WIDTH - 1;
-            frequency -= 1;
         }
         EndBatchDraw();
     }
 }
+
 
 /***********将文字实现文字的旋转(矩阵运算)************
 * 参数：无
@@ -290,9 +313,11 @@ void style_3() {
 void style_4() {
     int lattices_nums = character_nums;
 
+    cleardevice();
     for (int i = 0; i < lattices_nums; i++) {
         read_character(statement[i].character);
         generate_transposed_font_patterns(&(lattices[i]));
+        //generate_rotated_font_patterns(&(lattices[i]));
     }
 
     print_lattice();

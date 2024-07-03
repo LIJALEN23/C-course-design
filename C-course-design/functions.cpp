@@ -100,16 +100,6 @@ void choose_tool(int button_top_left_x, int button_top_left_y, int choice) {
 
 }
 
-/*****储存字符串是否为空********
-* 参数：无
-* 功能：判断statement和lattices是否为NULL，即判断是否有已输入的中文字符串
-* 返回值：	1. true：无已输入字符串
-*			2. false：存在已输入字符串
-***********************************/
-bool isEmpty() {
-	return (lattices == NULL && statement == NULL);
-}
-
 /********程序结束处理函数*************
 * 参数：无
 * 功能：实现对程序结束后的处理，关闭窗口和释放开辟堆区内存

@@ -2,6 +2,7 @@
 
 extern ExMessage msg;
 extern int toolbar_choice;
+extern bool first_run_sign;
 extern Lattice* lattices;
 extern Statement* statement;
 
@@ -14,7 +15,7 @@ extern Statement* statement;
 void manage_mouse_msg() {
 	//鼠标在输入按钮上显示被选中效果
 	if (msg.x > BUTTON_WIDTH * 0 && msg.x < BUTTON_WIDTH * 1 && msg.y > 0 && msg.y < BUTTON_HEIGHT) {
-		if (msg.message == WM_LBUTTONDOWN) {
+		if (msg.message == WM_LBUTTONDOWN && !first_run_sign) {
 			free(statement);
 			free(lattices);
 			statement_input_inputbox();
@@ -94,6 +95,12 @@ void manage_mouse_msg() {
 void user_input_API() {
 	draw_toolbar();
 	while (toolbar_choice == USER_INPUT) {
+		if (first_run_sign) {	//第一次运行需要直接弹出对话框进行输入
+			statement_input_inputbox();
+			generate_lattices();
+			print_lattice();
+			first_run_sign = false;		//第一次运行后将标志设置成false，即接下来不是第一次运行
+		}
 		if (peekmessage(&msg)) {
 			manage_mouse_msg();
 		}
@@ -107,11 +114,6 @@ void user_input_API() {
 */
 void style1_API() {
 	draw_toolbar();
-	if (isEmpty) {
-		toolbar_choice = USER_INPUT;
-		return;
-
-	}
 	while (toolbar_choice == STYLE_1) {
 		if (peekmessage(&msg)) {
 			manage_mouse_msg();
@@ -126,11 +128,6 @@ void style1_API() {
 */
 void style2_API() {
 	draw_toolbar();
-	if (isEmpty) {
-		toolbar_choice = USER_INPUT;
-		return;
-
-	}
 	while (toolbar_choice == STYLE_2) {
 		if (peekmessage(&msg)) {
 			manage_mouse_msg();
@@ -145,11 +142,6 @@ void style2_API() {
 */
 void style3_API() {
 	draw_toolbar();
-	if (isEmpty) {
-		toolbar_choice = USER_INPUT;
-		return;
-
-	}
 	while (toolbar_choice == STYLE_3) {
 		if (peekmessage(&msg)) {
 			manage_mouse_msg();
@@ -164,11 +156,6 @@ void style3_API() {
 */
 void style4_API() {
 	draw_toolbar();
-	if (isEmpty) {
-		toolbar_choice = USER_INPUT;
-		return;
-
-	}
 	while (toolbar_choice == STYLE_4) {
 		if (peekmessage(&msg)) {
 			manage_mouse_msg();
