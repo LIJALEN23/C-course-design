@@ -114,10 +114,6 @@ void style_1() {
     int x = 0;
 
     while (toolbar_choice == STYLE_1) {
-        if (peekmessage(&msg)) {
-            manage_mouse_msg();
-        }
-
         cleardevice();
 
         BeginBatchDraw();
@@ -135,6 +131,10 @@ void style_1() {
         x -= MOVE_SPEED;
         if (x < -(KERNING * character_nums + 5 * (LATTICE / 8))) {  //x为所有字都移动到屏幕外了的x坐标
             x = WINDOW_WIDTH - 1;
+        }
+
+        if (peekmessage(&msg)) {
+            manage_mouse_msg();
         }
     }
 }
@@ -166,11 +166,6 @@ void style_2() {
         change_rate -= 1;
         if (change_rate < 0) {
             change_rate = 100;
-        }
-
-
-        if (peekmessage(&msg)) {
-            manage_mouse_msg();
         }
 
         cleardevice();
@@ -215,6 +210,10 @@ void style_2() {
             }
         }
         EndBatchDraw();
+
+        if (peekmessage(&msg)) {
+            manage_mouse_msg();
+        }
     }
 }
 
@@ -247,11 +246,6 @@ void style_3() {
         change_rate -= 1;
         if (change_rate < 0) {
             change_rate = 100;
-        }
-
-
-        if (peekmessage(&msg)) {
-            manage_mouse_msg();
         }
 
         cleardevice();
@@ -301,9 +295,13 @@ void style_3() {
             x = WINDOW_WIDTH - 1;
         }
         EndBatchDraw();
+
+
+        if (peekmessage(&msg)) {
+            manage_mouse_msg();
+        }
     }
 }
-
 
 /***********将文字实现文字的旋转(矩阵运算)************
 * 参数：无

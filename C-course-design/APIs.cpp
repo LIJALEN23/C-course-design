@@ -113,12 +113,7 @@ void user_input_API() {
 * 返回值：无
 */
 void style1_API() {
-	draw_toolbar();
-	while (toolbar_choice == STYLE_1) {
-		if (peekmessage(&msg)) {
-			manage_mouse_msg();
-		}
-	}
+	style_1();
 }
 
 /****风格二API******
@@ -127,12 +122,7 @@ void style1_API() {
 * 返回值：无
 */
 void style2_API() {
-	draw_toolbar();
-	while (toolbar_choice == STYLE_2) {
-		if (peekmessage(&msg)) {
-			manage_mouse_msg();
-		}
-	}
+	style_2();
 }
 
 /****风格三API******
@@ -141,12 +131,7 @@ void style2_API() {
 * 返回值：无
 */
 void style3_API() {
-	draw_toolbar();
-	while (toolbar_choice == STYLE_3) {
-		if (peekmessage(&msg)) {
-			manage_mouse_msg();
-		}
-	}
+	style_3();
 }
 
 /****风格四API******
