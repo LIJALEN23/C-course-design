@@ -69,26 +69,6 @@ void generate_transposed_font_patterns(Lattice* lattice) {
 	}
 }
 
-/****生成旋转九十度的字模********
-* 参数：1. lattice：指向点阵字符结构体数组的指针
-* 功能：将缓冲区中的点阵数据转换为表示字符的二维数组(旋转九十度)，即该点阵字符的结构体中的二维数组
-* 返回值：无
-*/
-void generate_rotated_font_patterns(Lattice* lattice) {
-	int flag;
-	for (int i = 0; i < LATTICE; i++) {
-		for (int j = 0; j < LATTICE; j++) {
-			for (int k = 0; k < 8; k++) {
-				flag = buffer[i][j] & key[k];
-				if (flag)
-					lattice->lattice[j * 8 + k][LATTICE - i - 1] = 1;
-				else
-					lattice->lattice[j * 8 + k][LATTICE - i - 1] = 0;
-			}
-		}
-	}
-}
-
 /*********算出将整个字符数组的每个字符的字符矩阵***************
 * 参数：无
 * 功能：将输入的所有中文字符转化为字符矩阵

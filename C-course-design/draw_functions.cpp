@@ -315,7 +315,6 @@ void style_4() {
     for (int i = 0; i < lattices_nums; i++) {
         read_character(statement[i].character);
         generate_transposed_font_patterns(&(lattices[i]));
-        //generate_rotated_font_patterns(&(lattices[i]));
     }
 
     print_lattice();
